@@ -37,6 +37,8 @@ class WeatherSearchPage extends StatelessWidget {
                 return buildColumnWithData(context, state.weather);
               } else if (state is WeatherError) {
                 return buildInitialInput();
+              }else{
+                return Text("Something is wrong");
               }
             },
           ),
@@ -113,6 +115,7 @@ class CityInputField extends StatelessWidget {
   }
 
   void submitCityName(BuildContext context, String cityName) {
+    // ignore: close_sinks
     final weatherBloc = BlocProvider.of<WeatherBloc>(context);
     weatherBloc.add(GetWeather(cityName));
   }
